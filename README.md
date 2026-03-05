@@ -7,7 +7,7 @@
 Real-time edge AI Networked Inspection Platform for NVIDIA Jetson
 
 **RANI (Real-time AI Networked Inspection)** 는  
-**NVIDIA Jetson JetPack / Linux 기반 Edge Device 전용 산업용 AI 머신비전 검사 플랫폼**입니다.
+**NVIDIA Linux 기반 Edge Device 전용 산업용 AI 머신비전 검사 플랫폼**입니다.
 
 RANI는 **Jetson JetPack 환경에서 동작하는 경량 Edge AI 검사 플랫폼**으로  
 카메라 이미지 획득, AI 추론, 검사 로직, PLC 통신, 데이터 기록을 하나의 시스템으로 통합합니다.
