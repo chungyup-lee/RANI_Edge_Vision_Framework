@@ -26,7 +26,7 @@ RANI는 **소형 Edge Device에서 동작하도록 설계된 AI 기반 검사
 
 ### Flexible Camera Integration
 
-- Basler GigE 카메라 (Pylon SDK)
+- Basler GigE 카메라
 - 다양한 산업용 카메라 확장 구조
 - Soft Trigger / Continuous Acquisition 지원
 
@@ -93,52 +93,57 @@ Edge Device 환경에서도 안정적으로 동작하는
 
 ------------------------------------------------------------------------
 
-# ⚙️ Technology Stack
+## ⚙️ Core Technology
 
-| Category | Technology |
-|--------|--------|
-| Language | C++20 |
-| UI Framework | Qt6 (Core / Gui / Widgets) |
-| Platform | NVIDIA Jetson Orin Nano / Orin NX |
-| OS | JetPack 6.2.1 / 6.2.2 (Ubuntu Linux) |
-| Vision SDK | Basler Pylon |
-| AI Framework | TensorRT |
-| Image Processing | OpenCV |
-| Logging | CSV / Image Logging |
-| Communication | PLC, Serial Device Control |
+| Category | Description |
+|---|---|
+| Core Engine | High-performance C++ based vision processing engine |
+| AI Inference | GPU accelerated AI inference engine |
+| Vision Processing | Optimized industrial image processing pipeline |
+| Device Integration | Industrial camera and automation device integration |
+| Platform Support | Edge AI platforms and Linux environments |
+| System Logging | Inspection data and image logging system |
 
 ------------------------------------------------------------------------
 
-# 🧩 Project Structure
+## 🧩 System Architecture
 
-    src/
-    ├─ app/                    # UI
-    ├─ pipeline/               # inspection flow
-    ├─ device/                 # camera / plc / light
-    ├─ tool/                   # AI / vision tools
-    ├─ infra/                  # config / I/O
-    ├─ types/                  # shared types
-    ├─ Base/                   # common utilities
-    └─ Pipeline.h/.cpp         # main pipeline
+TITAN Edge Vision Framework는 다음과 같은 주요 모듈로 구성됩니다.
+
+- **Application Layer**  
+  검사 시스템 UI 및 사용자 인터페이스
+
+- **Inspection Pipeline**  
+  이미지 획득부터 검사 결과 생성까지의 처리 흐름 관리
+
+- **Device Interface**  
+  카메라, PLC, 조명 등 산업 장비 연동
+
+- **Vision Tools**  
+  AI 기반 검사 및 전통적인 비전 알고리즘
+
+- **System Infrastructure**  
+  설정 관리, 데이터 I/O, 로그 처리
 
 ------------------------------------------------------------------------
 
-# 🔄 Inspection Flow
+## 🔄 Inspection Flow
 
-RANI는 **Edge Device 환경에서 동작하는 실시간 검사 파이프라인**을
-제공합니다.
+RANI는 **Edge Device 환경에서 동작하는 실시간 검사 파이프라인**을 제공합니다.
 
-    PLC Trigger / IO Trigger
-    ↓
-    Camera Capture
-    ↓
-    Image Preprocessing & AI Inference & Vision Tool Processing
-    ↓
-    Result Judgment
-    ↓
-    PLC Result Output
-    ↓
-    UI Update & Logging & Image Save
+```mermaid
+flowchart LR
+
+A[PLC Trigger / IO Trigger] --> B[Camera Capture]
+B --> C[Image Preprocessing]
+C --> D[AI Inference]
+D --> E[Vision Processing]
+E --> F[Result Judgment]
+F --> G[PLC Result Output]
+G --> H[UI Update]
+H --> I[Logging]
+I --> J[Image Save]
+```
 
 ------------------------------------------------------------------------
 
